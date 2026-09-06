@@ -1,0 +1,77 @@
+project: bmw-kafas4-openpilot-bridge
+status: research_only
+vehicle_target:
+  platform: BMW F13
+  model: 6 Series
+  notes: preserve OEM F-series chassis and ACC during initial development
+
+donor_family:
+  preferred_generation: G30/G31 pre-LCI 5AT candidate
+  exact_vehicle: null
+  donor_vin: null
+  status: TO_VALIDATE
+
+sensors:
+  kafas4_high:
+    quantity: 1
+    part_number: null
+    hw_version: null
+    sw_version: null
+    network:
+      ethernet: TO_VALIDATE
+      can: TO_VALIDATE
+      flexray: TO_VALIDATE
+    dependencies:
+      sas: TO_VALIDATE
+      bdc: TO_VALIDATE
+      fsc: TO_VALIDATE
+      coding_cafd: TO_VALIDATE
+      calibration: REQUIRED_TO_VALIDATE
+
+  front_long_range_radar:
+    quantity: 1
+    part_number: null
+    generation: null
+    network: TO_VALIDATE
+    dependencies: TO_VALIDATE
+
+  front_side_radar_left:
+    quantity: 1
+    part_number: null
+    network: TO_VALIDATE
+
+  front_side_radar_right:
+    quantity: 1
+    part_number: null
+    network: TO_VALIDATE
+
+  rear_side_radar_left:
+    quantity: 1
+    part_number: null
+    network: TO_VALIDATE
+
+  rear_side_radar_right:
+    quantity: 1
+    part_number: null
+    network: TO_VALIDATE
+
+bench_reference_ecus:
+  sas:
+    required_in_vehicle: false
+    allowed_on_bench: true
+    role: teacher_reference
+  bdc:
+    required_in_vehicle: false
+    allowed_on_bench: true
+    role: startup_network_reference_if_needed
+
+interfaces_to_source:
+  automotive_ethernet_100base_t1: TO_VALIDATE
+  can_fd: TO_VALIDATE
+  classic_can: TO_VALIDATE
+  flexray_rx: CONDITIONAL
+  protected_power_breakout: REQUIRED
+
+purchase_rule: >-
+  Do not buy a mixed five-radar/KAFAS set until exact generation compatibility,
+  topology and required ECU partners have been checked against one donor configuration.
